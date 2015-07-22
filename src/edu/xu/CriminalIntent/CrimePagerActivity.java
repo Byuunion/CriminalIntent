@@ -13,7 +13,6 @@ import java.util.UUID;
 
 public class CrimePagerActivity extends FragmentActivity {
     private ViewPager mViewPager;
-    private ArrayList<Crime> mCrimes;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
