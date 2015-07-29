@@ -11,11 +11,13 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 
-public class CrimePagerActivity extends FragmentActivity {
-    private ViewPager mViewPager;
+public class CrimePagerActivity extends FragmentActivity
+    implements CrimeFragment.Callbacks{
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
+        private ViewPager mViewPager;
+
+        @Override
+        public void onCreate (Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         mViewPager = new ViewPager(this);
         mViewPager.setId(R.id.viewPager);
@@ -32,14 +34,18 @@ public class CrimePagerActivity extends FragmentActivity {
 
             @Override
             public Fragment getItem(int pos) {
-                UUID crimeId =  mCrimes.get(pos).getId();
+                UUID crimeId = mCrimes.get(pos).getId();
                 return CrimeFragment.newInstance(crimeId);
             }
         });
 
         mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            public void onPageScrollStateChanged(int state) {}
-            public void onPageScrolled(int pos, float posOffset, int posOffsetPixels) { }
+            public void onPageScrollStateChanged(int state) {
+            }
+
+            public void onPageScrolled(int pos, float posOffset, int posOffsetPixels) {
+            }
+
             public void onPageSelected(int pos) {
                 Crime crime = mCrimes.get(pos);
                 if (crime.getTitle() != null) {
@@ -48,7 +54,7 @@ public class CrimePagerActivity extends FragmentActivity {
             }
         });
 
-        UUID crimeId = (UUID)getIntent()
+        UUID crimeId = (UUID) getIntent()
                 .getSerializableExtra(
                         CrimeFragment.EXTRA_CRIME_ID);
         for (int i = 0; i < mCrimes.size(); i++) {
@@ -57,5 +63,8 @@ public class CrimePagerActivity extends FragmentActivity {
                 break;
             }
         }
+    }
+
+    public void onCrimeUpdated(Crime crime) {
     }
 }
