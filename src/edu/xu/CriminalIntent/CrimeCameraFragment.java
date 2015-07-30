@@ -8,7 +8,6 @@ import android.hardware.Camera;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.*;
 import android.widget.Button;
 
@@ -18,7 +17,6 @@ import java.util.List;
 import java.util.UUID;
 
 public class CrimeCameraFragment extends Fragment {
-    private static final String TAG = "CrimeCameraFragment";
     public static final String EXTRA_PHOTO_FILENAME = "edu.xu.android.criminalintent.photo_filename";
     private Camera mCamera;
     private SurfaceView mSurfaceView;
@@ -40,7 +38,6 @@ public class CrimeCameraFragment extends Fragment {
                 os = getActivity().openFileOutput(filename, Context.MODE_PRIVATE);
                 os.write(data);
             } catch (Exception e) {
-                Log.e(TAG, "Error writing to file " + filename, e);
                 success = false;
             }
             finally {
@@ -48,7 +45,6 @@ public class CrimeCameraFragment extends Fragment {
                     if (os != null)
                         os.close();
                 } catch (Exception e) {
-                    Log.e(TAG, "Error closing file " + filename, e);
                     success = false;
                 }
             }
@@ -95,8 +91,6 @@ public class CrimeCameraFragment extends Fragment {
                         mCamera.setPreviewDisplay(holder);
                     }
                 } catch (IOException exception) {
-                    Log.e(TAG,
-                            "Error setting up preview display", exception);
                 }
             }
             public void surfaceDestroyed(SurfaceHolder holder) {
@@ -116,7 +110,6 @@ public class CrimeCameraFragment extends Fragment {
                 try {
                     mCamera.startPreview();
                 } catch (Exception e) {
-                    Log.e(TAG, "Could not start preview", e);
                     mCamera.release();
                     mCamera = null;
                 }

@@ -1,13 +1,11 @@
 package edu.xu.CriminalIntent;
 
 import android.content.Context;
-import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.UUID;
 
 public class CrimeLab {
-    private static final String TAG = "CrimeLab";
     private static final String FILENAME = "crimes.json";
     private ArrayList<Crime> mCrimes;
     private CriminalIntentJSONSerializer mSerializer;
@@ -22,18 +20,14 @@ public class CrimeLab {
             mCrimes = mSerializer.loadCrimes();
         } catch (Exception e) {
             mCrimes = new ArrayList<>();
-            Log.e(TAG, "Error loading crimes: ", e);
         }
     }
 
     public boolean saveCrimes() {
         try {
             mSerializer.saveCrimes(mCrimes);
-            Log.d(TAG, "crimes saved to file");
             return true;
         } catch (Exception e) {
-            Log.e(TAG,
-                    "Error saving crimes: ", e);
             return false;
         }
     }

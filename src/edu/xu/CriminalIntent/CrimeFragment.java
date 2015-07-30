@@ -18,7 +18,6 @@ import android.support.v4.app.NavUtils;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.format.DateFormat;
-import android.util.Log;
 import android.view.*;
 import android.widget.*;
 import android.widget.CompoundButton.OnCheckedChangeListener;
@@ -27,7 +26,6 @@ import java.util.Date;
 import java.util.UUID;
 
 public class CrimeFragment extends Fragment {
-    private static final String TAG = "CrimeFragment";
     public static final String EXTRA_CRIME_ID =
             "edu.xu.CriminalIntent.crime_id";
     private static final String DIALOG_DATE = "date";
@@ -256,7 +254,6 @@ public class CrimeFragment extends Fragment {
             if (filename != null) {
                 Photo p = new Photo(filename);
                 mCrime.setPhoto(p);
-                Log.i(TAG, "Crime: " + mCrime.getTitle() + " has a photo");
                 mCallbacks.onCrimeUpdated(mCrime);
                 showPhoto();
             }

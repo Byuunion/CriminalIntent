@@ -11,7 +11,6 @@ import android.widget.ImageView;
 public class ImageFragment extends DialogFragment {
     public static final String EXTRA_IMAGE_PATH =
             "edu.xu.android.criminalintent.image_path";
-    private CrimeFragment cFrag = new CrimeFragment();
     private ImageView mImageView;
 
     public static ImageFragment newInstance(String imagePath) {
